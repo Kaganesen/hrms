@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
-//@JsonIgnoreProperties({"HibernateLazyInitializer","Handler"})
 public class User {
 
     @Id
