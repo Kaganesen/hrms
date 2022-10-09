@@ -11,7 +11,8 @@ import com.example.hrms.entities.concretes.Position;
 
 @Service
 
-public class PositionsManager implements PositionsService {
+public class PositionsManager implements PositionsService{
+
 
 	private final PositionDao positionDao;
 

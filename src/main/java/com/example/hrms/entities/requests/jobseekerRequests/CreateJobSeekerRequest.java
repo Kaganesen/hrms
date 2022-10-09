@@ -28,7 +28,7 @@ public class CreateJobSeekerRequest {
     @NotNull
     private String password;
     @NotNull
-    private String againPassword;
+    private String repeatPassword;
 
 
 }

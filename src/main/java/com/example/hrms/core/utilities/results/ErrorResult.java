@@ -3,10 +3,10 @@ package com.example.hrms.core.utilities.results;
 public class ErrorResult extends Result{
 	
 	public ErrorResult() {
-		super(false);
+		super(true);
 	}
 	
 	public ErrorResult(String message) {
-		super(false,message);
+		super(true,message);
 	}
 }

@@ -16,6 +16,7 @@ import com.example.hrms.entities.concretes.Position;
 
 public class PositionsController {
 
+
 	private PositionsService positionsService;
 
 	@Autowired

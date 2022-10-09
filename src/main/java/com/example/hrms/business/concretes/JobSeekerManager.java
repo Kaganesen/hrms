@@ -1,10 +1,7 @@
 package com.example.hrms.business.concretes;
 
 import com.example.hrms.business.abstracts.JobSeekerService;
-import com.example.hrms.core.utilities.results.DataResult;
-import com.example.hrms.core.utilities.results.Result;
-import com.example.hrms.core.utilities.results.SuccessDataResult;
-import com.example.hrms.core.utilities.results.SuccessResult;
+import com.example.hrms.core.utilities.results.*;
 import com.example.hrms.dataAccess.abstracts.JobSeekerDao;
 import com.example.hrms.entities.concretes.JobSeeker;
 import com.example.hrms.entities.requests.jobseekerRequests.CreateJobSeekerRequest;
@@ -26,20 +23,29 @@ public class JobSeekerManager implements JobSeekerService {
 
     @Override
     public Result add(CreateJobSeekerRequest createJobSeekerRequest) throws Exception {
-        JobSeeker jobSeeker = new JobSeeker();
-        jobSeeker.setFirstName(createJobSeekerRequest.getFirstName());
-        jobSeeker.setLastName(createJobSeekerRequest.getLastName());
-        jobSeeker.setIdentityNumber(createJobSeekerRequest.getIdentityNumber());
-        jobSeeker.setBirthDate(createJobSeekerRequest.getBirthDay());
-        jobSeeker.setEmail(createJobSeekerRequest.getEmail());
-        jobSeeker.setPassword(createJobSeekerRequest.getPassword());
-        jobSeeker.setAgainPassword(createJobSeekerRequest.getAgainPassword());
+        try {
+            checkIfExistByEmail(createJobSeekerRequest.getEmail());
+            checkIfExistByIdentityNumber(createJobSeekerRequest.getIdentityNumber());
+
+            JobSeeker jobSeeker = new JobSeeker();
+            jobSeeker.setFirstName(createJobSeekerRequest.getFirstName());
+            jobSeeker.setLastName(createJobSeekerRequest.getLastName());
+            jobSeeker.setIdentityNumber(createJobSeekerRequest.getIdentityNumber());
+            jobSeeker.setBirthDate(createJobSeekerRequest.getBirthDay());
+            jobSeeker.setEmail(createJobSeekerRequest.getEmail());
+            jobSeeker.setPassword(createJobSeekerRequest.getPassword());
+            jobSeeker.setRepeatPassword(createJobSeekerRequest.getRepeatPassword());
 
 
-        checkIfExistByEmail(createJobSeekerRequest.getEmail());
-        checkIfExistByIdentityNumber(createJobSeekerRequest.getIdentityNumber());
-        this.jobSeekerDao.save(jobSeeker);
-        return new SuccessResult("Added to data");
+
+            this.jobSeekerDao.save(jobSeeker);
+            return new SuccessResult("Added to data");
+        } catch (Exception e) {
+
+            return new ErrorResult(e.getMessage());
+        }
+
+
     }
 
     @Override
