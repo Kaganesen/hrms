@@ -2,6 +2,7 @@ package com.example.hrms.business.concretes;
 
 import java.util.List;
 
+import com.example.hrms.core.utilities.results.DataResult;
 import com.example.hrms.dataAccess.abstracts.PositionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +24,9 @@ public class PositionsManager implements PositionsService{
 
 
 	@Override
-	public List<Position> getAll() {
+	public DataResult<List<Position>> getAll() {
 		
-		return this.positionDao.findAll();
+		return (DataResult<List<Position>>) this.positionDao.findAll();
 		
 	}
 

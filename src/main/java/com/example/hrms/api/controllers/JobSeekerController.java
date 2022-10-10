@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/jobseeker")
+@RequestMapping("/api/jobseekers")
 
 public class JobSeekerController {
     private final JobSeekerService jobSeekerService;

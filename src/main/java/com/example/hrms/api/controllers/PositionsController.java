@@ -28,7 +28,7 @@ public class PositionsController {
 	@GetMapping("/getall")
 
 	public List<Position> getAll() {
-		return this.positionsService.getAll();
+		return (List<Position>) this.positionsService.getAll();
 
 	}
 
